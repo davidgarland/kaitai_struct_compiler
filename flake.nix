@@ -24,10 +24,9 @@
 	src = pkgs.lib.cleanSource ./.;
 	nativeBuildInputs = [ pkgs.keepBuildTree ];
 	depsSha256 = "sha256-U4+a96fv6i6lRvZCM8np0jCF2hJHS97kvZFumbJCrtI="; # Set to empty to auto-recompute
-	buildPhase = "sbt compile";
+	buildPhase = "sbt compilerJVM/universal:packageBin";
 	installPhase = ''
-	  mkdir -p $out/target
-	  cp ./jvm/target/universal/*.zip $out/target/kaitai.zip
+	  cp jvm/target/universal/*.zip $out
 	'';
       };
 
